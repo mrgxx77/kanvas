@@ -1,48 +1,82 @@
 const priceOutput = document.querySelector('.sum span');
-
 const checkboxes = document.querySelectorAll('.options input[type="checkbox"]');
+const canvas = document.querySelector('.canvas');
+
+const sizeButtons = document.querySelectorAll('.a');
+const inputWidth = document.querySelector('.input-width');
+const inputHeight = document.querySelector('.input-height');
+const calculateBtn = document.querySelector('.calculate-btn');
+
+const scale = 3;
+const priceCm = 1;
 
 let currentWidth = 0;
 let currentHeight = 0;
+let price = 0;
 
-// ціна за 1 см²
-const pricePerCm = 1;
+/* стандартні розміри */
+sizeButtons.forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
 
+    const [w, h] = btn.textContent.split('x').map(Number);
+
+    currentWidth = w;
+    currentHeight = h;
+
+    canvas.style.width = w * scale + 'px';
+    canvas.style.height = h * scale + 'px';
+
+    calculatePrice();
+  });
+});
+
+/* кастомні розміри */
+calculateBtn.addEventListener('click', () => {
+  const w = Number(inputWidth.value);
+  const h = Number(inputHeight.value);
+
+  if (w < 30 || h < 30) {
+    alert('Введіть коректні значення (мінімум 30 см)');
+    return;
+  }
+
+  currentWidth = w;
+  currentHeight = h;
+
+  canvas.style.width = w * scale + 'px';
+  canvas.style.height = h * scale + 'px';
+
+  calculatePrice();
+});
+
+checkboxes.forEach(cb => {
+  cb.addEventListener('change', calculatePrice);
+});
+
+/* ціна */
 function calculatePrice() {
-  let price = currentWidth * currentHeight * pricePerCm;
+  price = (currentWidth + currentHeight) * priceCm;
 
-  checkboxes.forEach((checkbox, index) => {
-    if (checkbox.checked) {
-      if (index === 0) price += 35;
-      if (index === 1) price += 10;
-      if (index === 2) price += 40;
+  let frame = false;
+
+  checkboxes.forEach((cb, i) => {
+    if (cb.checked) {
+      if (i === 0) price += 35;
+      if (i === 1) {
+        price += 10;
+        frame = true;
+      }
+      if (i === 2) price += 40;
     }
   });
 
+  canvas.style.border = frame ? '5px solid #28526c' : 'none';
   priceOutput.textContent = price;
 }
-const sizeButtons = document.querySelectorAll('.a');
-const canvas = document.querySelector('.canvas');
+priceOutput.textContent = price;
 
-const scale = 3;
-
-sizeButtons.forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault(); 
-
-    const [width, height] = btn.textContent
-      .toLowerCase()
-      .split('x')
-      .map(Number);     
-
-    canvas.style.width = width * scale + 'px';
-    canvas.style.height = height * scale + 'px';
-    currentWidth = width;
-    currentHeight = height;
-    calculatePrice();
-  });   
-});
-
-checkboxes.forEach(checkbox => {
-  checkbox.addEventListener('change', calculatePrice);
+document.querySelector('.set').addEventListener('click', e => {
+  e.preventDefault();
+  document.querySelector('.count').style.display = 'block';
 });

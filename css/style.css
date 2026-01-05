@@ -11,7 +11,7 @@ a{
     transition: all 0.5s ease;
 }
 h3{
-    font-size: 18px;
+    font-size: 16px;
     text-transform: uppercase;
     font-weight: 700;
     text-align: center;
@@ -19,7 +19,7 @@ h3{
 hr{
     background-color: #7c9bac;
     width: 100%;
-    height: 1px;
+    /* height: 1px; */
 }
 header{
     filter: drop-shadow(-0.174px 4.997px 5px rgba(0,0,0,0.05));
@@ -64,7 +64,7 @@ svg:hover{
     align-items: center;
 }
 .order a{
-    font-size: 18px;
+    font-size: 16px;
     text-transform: uppercase;
     color: #ffffff;
     font-weight: 700;
@@ -108,7 +108,7 @@ svg:hover{
     padding-top: 40px;
 }
 .parameters h2{
-    font-size: 36px;
+    font-size: 34px;
     color: #333333;
     font-weight: 700;
     padding-bottom: 20px;
@@ -122,9 +122,11 @@ svg:hover{
 .dimensions{
     column-gap: 20px;
     padding-bottom: 50px;
+    text-align: center;
+    display: flex;
 }
 .dimensions a:not(.set){
-    font-size: 20px;
+    font-size: 18px;
     color: #4c7792;
     text-align: center;
     padding: 12px 15px;
@@ -138,7 +140,7 @@ svg:hover{
     border: 2px solid #28526c;
 }
 .set{
-    font-size: 16px;
+    font-size: 14px;
     text-transform: uppercase;
     color: #4c7792;
     font-weight: 700;
@@ -153,6 +155,7 @@ svg:hover{
     display: flex;
     justify-content: start;
     position: relative;
+    display: none;
 }
 .count input{
     width: 80px;
@@ -160,13 +163,16 @@ svg:hover{
     border-radius: 5px;
     background-color: #f2f9fb;
     border: 2px solid #4c7792;
+    font-size: 16px;
+    color: #4c7792;
+    padding-left: 15px;
 }
 .cg{
     display: flex;
     column-gap: 50px;
 }
-.count a{
-    font-size: 18px;
+.count button{
+    font-size: 16px;
     text-transform: uppercase;
     color: #4c7792;
     font-weight: 700;
@@ -174,19 +180,22 @@ svg:hover{
     border-radius: 10px;
     background-color: #d6edfb;
     padding: 15px 30px;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
 }
 .x{
     position: absolute;
-    font-size: 24px;
+    font-size: 22px;
     color: #4c7792;
     font-weight: 500;
     text-align: center;
-    left: 17%; 
+    left: 19%; 
+    /* top: 50%; */
+    bottom: 70%;
+    /* left: 50%; */
     transform: translate(50%, 50%);
 }
 .count span:not(.x){
-    font-size: 16px;
+    font-size: 14px;
     color: #333333;
     font-weight: 500;
     text-align: center;
@@ -199,7 +208,7 @@ svg:hover{
 .height{
     position: absolute;
     top: -20%;
-    left: 23%;
+    left: 25%;
 }
 .options{
     padding-bottom: 30px;
@@ -234,7 +243,7 @@ input:checked + span{
     text-align: center;
 }
 .start p{
-    font-size: 18px;
+    font-size: 16px;
     color: #4c7792;
     font-weight: 700;
     padding-left: 10px;
@@ -248,7 +257,7 @@ input:checked + span{
     background-color: #d6edfb;
 }
 .sum a{
-    font-size: 24px;
+    font-size: 22px;
     text-transform: uppercase;
     color: #ffffff;
     font-weight: 700;
@@ -263,7 +272,7 @@ input:checked + span{
     color: #56c107;
 }
 .general{
-    font-size: 18px;
+    font-size: 16px;
     text-transform: uppercase;
     color: #333333;
     font-weight: 700;
@@ -272,7 +281,7 @@ input:checked + span{
     padding-top: 25px;
 }
 .sum span{
-    font-size: 48px;
+    font-size: 46px;
     color: #56c107;
     font-weight: 700;
     text-align: center;
@@ -280,7 +289,7 @@ input:checked + span{
     padding-right: 10px;
 }
 .currency{
-    font-size: 30px;
+    font-size: 28px;
     color: #56c107;
     font-weight: 700;
     text-align: center;
