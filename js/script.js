@@ -36,8 +36,8 @@ calculateBtn.addEventListener('click', () => {
   const w = Number(inputWidth.value);
   const h = Number(inputHeight.value);
 
-  if (w < 30 || h < 30) {
-    alert('Введіть коректні значення (мінімум 30 см)');
+  if (w < 30 || h < 30 || w > 200 || h > 150) {
+    alert('Введіть коректні значення (мінімум 30 см, максимальна ширина 200 см, максмальна висота 150 см)');
     return;
   }
 
@@ -59,10 +59,14 @@ function calculatePrice() {
   price = (currentWidth + currentHeight) * priceCm;
 
   let frame = false;
+  let expensive = false;
 
   checkboxes.forEach((cb, i) => {
     if (cb.checked) {
-      if (i === 0) price += 35;
+      if (i === 0) {
+        price += 35;
+        expensive = true;
+      }
       if (i === 1) {
         price += 10;
         frame = true;
@@ -72,6 +76,7 @@ function calculatePrice() {
   });
 
   canvas.style.border = frame ? '5px solid #28526c' : 'none';
+  canvas.style.background = expensive ? '#fbfaf4ff' : '#fff';
   priceOutput.textContent = price;
 }
 priceOutput.textContent = price;

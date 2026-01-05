@@ -76,7 +76,7 @@ svg:hover{
 }
 .order a:hover{
     color: #56c107;
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid #56c107;
 }
 .easel{
@@ -94,6 +94,12 @@ svg:hover{
     justify-content: center;
     padding-top: 50px;
 }
+/* .img{
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+} */
 .canvas {
     position: absolute;
     left: 50%;
